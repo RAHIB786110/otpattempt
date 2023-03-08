@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var attempt = 3;
+        var UserDetails={
+            "Password":"123456"
+        }
+        
+ 
+        function verifyPassword(){
+            var error = document.getElementById("leftattempt");
+            var password = document.getElementById("password").value;
+            if(UserDetails.Password===password){
+                document.getElementById("success").innerHTML = "Verified Succesfully";
+                 
+            }else{
+                attempt--;
+                error.innerHTML ="You Have "+attempt+"left";
+                document.getElementById("success").innerHTML ="";
+                if(attempt==0){
+                    password.disabled="true";
+                    document.querySelector("button").disabled="true";
+                    error.innerHTML="Blocked Try After Some Time";
+
+                    alert("You are Blocked")
+                }
+                
+            }
+        }
+
+            
+        
+    </script>
+</head>
+<body>
+    <div style="display: flex;justify-content: center;align-items: center; position: relative;">
+        <div style="border:2px solid black; padding: 20px; width: 300px;height: 150px; background-color: aqua;">
+            <div style="text-align: center;">
+                <h2>Enter Your Otp</h2>
+            </div>
+            <div style="display: flex;justify-content: center;text-align: center;align-items: center;">
+               <div>
+                <input type="password" id="password"><button onclick="verifyPassword()">Submit</button>
+               <div id="leftattempt"></div>
+               <h2 id="success"></h2>
+               </div>
+             
+            </div>
+            
+        </div>
+        <div>
+            <h2>Password :-  123456</h2>
+        </div>
+</body>
+</html>
